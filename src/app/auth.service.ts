@@ -14,14 +14,10 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-
-
   public Login(userInfo: Login): Observable<any> {
 
     localStorage.setItem('ACCESS_TOKEN', "access_token");
-    return this.http.get(this.baseUrl + '/logintbls?uname=' + userInfo.uname + '&pass=' + userInfo.pass);
-
-
+    return this.http.get(this.baseUrl + '/Login?uname=' + userInfo.uname + '&pass=' + userInfo.pass);
   }
 
   public isLoggedIn() {
@@ -33,7 +29,7 @@ export class AuthService {
   }
 
   public getLoginDet(): Observable<any> {
-    return this.http.get(this.baseUrl + '/logintbls');
+    return this.http.get(this.baseUrl + '/Login');
   }
 
 }

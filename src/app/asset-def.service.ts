@@ -8,31 +8,33 @@ import { AssetDefComponent } from './asset-def/asset-def.component';
   providedIn: 'root'
 })
 export class AssetDefService {
-  private baseUrl='http://localhost:49333/api';
+  private baseUrl = 'http://localhost:49333/api';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
   getAssetList(): Observable<any> {
-    return this.http.get(this.baseUrl + '/asset_def');
+    return this.http.get(this.baseUrl + '/AssetDef');
   }
   deleteAsset(id: number): Observable<any> {
-    return this.http.delete(this.baseUrl + '/asset_def/'+id);
+    return this.http.delete(this.baseUrl + '/AssetDef/' + id);
   }
-  getAsset(id: number):Observable<any>
-  {
-    return this.http.get(this.baseUrl+'/asset_def/'+id);
+  getAsset(id: number): Observable<any> {
+    return this.http.get(this.baseUrl + '/AssetDef/' + id);
   }
-  updateAsset(id: number,asset: AssetDef)
-  {
-    return this.http.put(this.baseUrl+'/asset_def/'+id,AssetDef);
+  updateAsset(id: number, asset: AssetDef) {
+    return this.http.put(this.baseUrl + '/AssetDef/' + id, asset);
   }
-  addAsset(asset:AssetDefComponent)
-  {
-    return this.http.post(this.baseUrl+'/asset_def',asset);
+  addAsset(asset: AssetDef) {
+    return this.http.post(this.baseUrl + '/AssetDef', asset);
   }
-  searchAsset(asset:AssetDefComponent)
-  {
-    return this.http.post(this.baseUrl+'/asset_def',asset);
+  getAssetType(): Observable<any> {
+    return this.http.get(this.baseUrl + '/AssetType');
   }
+  getAssetTypes(id: number): Observable<any> {
+    return this.http.get(this.baseUrl + '/AssetType/' + id);
+ }
+  searchAsset(ad_name: string): Observable<any> {
+    return this.http.get(this.baseUrl + '/AssetDef?name=' + ad_name);
+ }
 
 
 }
